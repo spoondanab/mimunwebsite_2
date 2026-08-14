@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Register | MIMUN 6.0</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <div class="custom-cursor wax-cursor" id="customCursor"></div>
+
+  <nav class="navbar">
+    <ul class="nav-links">
+      <li><a href="index.html">Homepage</a></li>
+      <li><a href="register.html">Register</a></li>
+      <li><a href="committees.html">Committees</a></li>
+      <li><a href="secretariat.html">Secretariat</a></li>
+      <li><a href="faqs.html">FAQ</a></li>
+      <li><a href="schedule.html">Schedule</a></li>
+    </ul>
+  </nav>
+
+  <main class="section-container gold-border scroll-reveal" style="margin-top: 3rem;">
+    <h2>Delegate Registration</h2>
+    <div class="divider-gold"><span>📜</span></div>
+    
+    <form id="registrationForm" style="display: flex; flex-direction: column; gap: 1.5rem; max-width: 650px; margin: 0 auto;">
+      
+      <div style="display: flex; flex-direction: column; gap: 0.5rem;">
+        <label for="fullName" style="font-family: var(--font-heading); color: var(--blood-red); font-weight: bold;">Full Name</label>
+        <input type="text" id="fullName" placeholder="Lord / Lady Full Name" required style="padding: 0.8rem; border: 2px solid var(--gold-yellow); background: var(--parchment-dark); font-family: var(--font-body); font-size: 1rem; color: var(--text-dark);">
+      </div>
+
+      <div style="display: flex; flex-direction: column; gap: 0.5rem;">
+        <label for="email" style="font-family: var(--font-heading); color: var(--blood-red); font-weight: bold;">Email</label>
+        <input type="email" id="email" placeholder="delegate@realm.com" required style="padding: 0.8rem; border: 2px solid var(--gold-yellow); background: var(--parchment-dark); font-family: var(--font-body); font-size: 1rem; color: var(--text-dark);">
+      </div>
+
+      <div style="display: flex; flex-direction: column; gap: 0.5rem;">
+        <label for="contactNumber" style="font-family: var(--font-heading); color: var(--blood-red); font-weight: bold;">Contact Number (Preferably WhatsApp)</label>
+        <input type="tel" id="contactNumber" placeholder="+1234567890" required style="padding: 0.8rem; border: 2px solid var(--gold-yellow); background: var(--parchment-dark); font-family: var(--font-body); font-size: 1rem; color: var(--text-dark);">
+      </div>
+
+      <div style="display: flex; flex-direction: column; gap: 0.5rem;">
+        <label for="institute" style="font-family: var(--font-heading); color: var(--blood-red); font-weight: bold;">Institute</label>
+        <input type="text" id="institute" placeholder="School, Academy, or University" required style="padding: 0.8rem; border: 2px solid var(--gold-yellow); background: var(--parchment-dark); font-family: var(--font-body); font-size: 1rem; color: var(--text-dark);">
+      </div>
+
+      <div style="display: flex; flex-direction: column; gap: 0.5rem;">
+        <label for="gradeYear" style="font-family: var(--font-heading); color: var(--blood-red); font-weight: bold;">Grade / Year</label>
+        <input type="text" id="gradeYear" placeholder="e.g., Grade 11 / Year 2" required style="padding: 0.8rem; border: 2px solid var(--gold-yellow); background: var(--parchment-dark); font-family: var(--font-body); font-size: 1rem; color: var(--text-dark);">
+      </div>
+
+      <div style="display: flex; flex-direction: column; gap: 0.5rem;">
+        <label for="pastExperience" style="font-family: var(--font-heading); color: var(--blood-red); font-weight: bold;">Past MUN Experience (If Any)</label>
+        <textarea id="pastExperience" rows="3" placeholder="List prior conferences and accolades..." style="padding: 0.8rem; border: 2px solid var(--gold-yellow); background: var(--parchment-dark); font-family: var(--font-body); font-size: 1rem; color: var(--text-dark); resize: vertical;"></textarea>
+      </div>
+
+      <div style="display: flex; flex-direction: column; gap: 0.5rem;">
+        <label for="commPref1" style="font-family: var(--font-heading); color: var(--blood-red); font-weight: bold;">Committee Preference 1</label>
+        <select id="commPref1" required style="padding: 0.8rem; border: 2px solid var(--gold-yellow); background: var(--parchment-dark); font-family: var(--font-body); font-size: 1rem; color: var(--text-dark);">
+          <option value="" disabled selected>Select Committee</option>
+<option value="UNSC">UN Security Council (UNSC)</option>
+<option value="UNW">UN Women (UNW)</option>
+<option value="UNHRC">UN Human Rights Council (UNHRC)</option>
+<option value="WHO">World Health Organization (WHO)</option>
+<option value="IAEA">International Atomic Energy Agency (IAEA)</option>
+<option value="LOK SABHA">Lok Sabha</option>
+<option value="IP">International Press (IP)</option>
+<option value="CCC One Piece">CCC - One Piece</option>
+<option value="CCC Historic">CCC - Operation Valkyrie (1944)</option>
+<option value="Battle of Existence">The Battle of Existence (Sci-Fi)</option>
+<option value="IPL Auction">IPL Auction</option>
+<option value="FIFA Auction">FIFA Auction</option>
+        </select>
+      </div>
+
+      <div style="display: flex; flex-direction: column; gap: 0.5rem;">
+        <label for="portPref1" style="font-family: var(--font-heading); color: var(--blood-red); font-weight: bold;">Portfolio Preference 1</label>
+        <input type="text" id="portPref1" placeholder="Preferred Delegate / Country Allocation 1" required style="padding: 0.8rem; border: 2px solid var(--gold-yellow); background: var(--parchment-dark); font-family: var(--font-body); font-size: 1rem; color: var(--text-dark);">
+      </div>
+
+      <div style="display: flex; flex-direction: column; gap: 0.5rem;">
+        <label for="commPref2" style="font-family: var(--font-heading); color: var(--blood-red); font-weight: bold;">Committee Preference 2</label>
+        <select id="commPref2" required style="padding: 0.8rem; border: 2px solid var(--gold-yellow); background: var(--parchment-dark); font-family: var(--font-body); font-size: 1rem; color: var(--text-dark);">
+          <option value="" disabled selected>Select Committee 2</option>
+          <option value="" disabled selected>Select Committee</option>
+<option value="UNSC">UN Security Council (UNSC)</option>
+<option value="UNW">UN Women (UNW)</option>
+<option value="UNHRC">UN Human Rights Council (UNHRC)</option>
+<option value="WHO">World Health Organization (WHO)</option>
+<option value="IAEA">International Atomic Energy Agency (IAEA)</option>
+<option value="LOK SABHA">Lok Sabha</option>
+<option value="IP">International Press (IP)</option>
+<option value="CCC One Piece">CCC - One Piece</option>
+<option value="CCC Historic">CCC - Operation Valkyrie (1944)</option>
+<option value="Battle of Existence">The Battle of Existence (Sci-Fi)</option>
+<option value="IPL Auction">IPL Auction</option>
+<option value="FIFA Auction">FIFA Auction</option>
+        </select>
+      </div>
+
+      <div style="display: flex; flex-direction: column; gap: 0.5rem;">
+        <label for="portPref2" style="font-family: var(--font-heading); color: var(--blood-red); font-weight: bold;">Portfolio Preference 2</label>
+        <input type="text" id="portPref2" placeholder="Preferred Delegate / Country Allocation 2" required style="padding: 0.8rem; border: 2px solid var(--gold-yellow); background: var(--parchment-dark); font-family: var(--font-body); font-size: 1rem; color: var(--text-dark);">
+      </div>
+
+      <div style="text-align: center; margin: 1rem 0; padding: 1.5rem; background: var(--parchment-dark); border: 2px dashed var(--gold-yellow);">
+        <h4 style="font-family: var(--font-heading); color: var(--blood-red); margin-bottom: 0.5rem;">Payment QR Code</h4>
+        <p style="font-size: 0.95rem; margin-bottom: 1rem;">Scan below to fulfill the royal delegate dues:</p>
+        <img src="https://api.qrserver.com/v1/create-qr-code/?size=180x180&data=MIMUN6.0_DELEGATE_FEE" alt="Payment QR Code" style="border: 3px solid var(--gold-yellow); border-radius: 4px; padding: 5px; background: white;">
+      </div>
+
+      <div style="display: flex; flex-direction: column; gap: 0.5rem;">
+        <label for="paymentProof" style="font-family: var(--font-heading); color: var(--blood-red); font-weight: bold;">Upload Payment Screenshot</label>
+        <input type="file" id="paymentProof" accept="image/*,.pdf" required style="padding: 0.8rem; border: 2px solid var(--gold-yellow); background: var(--parchment-dark); font-family: var(--font-body); font-size: 1rem; color: var(--text-dark);">
+      </div>
+
+      <div style="text-align: center; margin-top: 1.5rem;">
+        <button type="submit" class="wax-seal-btn" style="border: none;">Submit Scroll</button>
+      </div>
+    </form>
+    
+
+    <div id="confirmationMessage" style="display: none; text-align: center; padding: 3rem 1rem;">
+      <div style="font-size: 3rem; color: var(--gold-yellow); margin-bottom: 1rem;">👑</div>
+      <h2 style="font-size: 2.2rem; color: var(--blood-red); margin-bottom: 1rem;">Registration Confirmed</h2>
+      <div class="divider-gold"><span>✦</span></div>
+      <p style="font-size: 1.2rem; margin-top: 1rem; color: var(--text-dark);">
+        Your scroll and tribute have been received by the High Secretariat. A formal decree containing your confirmation and committee allocation details will be dispatched to your email address shortly.
+      </p>
+      <a href="index.html" class="wax-seal-btn" style="margin-top: 2rem;">Return to Realm</a>
+    </div>
+
+  </main>
+
+  <div id="successModal" class="modal-overlay">
+  <div class="modal-content gold-border" style="text-align: center;">
+    <button class="close-modal" id="closeSuccessModal">&times;</button>
+    <h2 style="color: var(--blood-red);">Thy Decree Has Been Sealed!</h2>
+    <div class="divider-gold"><span>👑</span></div>
+    <p>Thy scroll of candidacy for <strong>MIMUN 6.0</strong> has been safely recorded in the royal registry.</p>
+    <p style="margin-top: 1rem; font-size: 0.95rem;">Thy official portfolio allotment shall be dispatched to thy electronic inbox shortly.</p>
+    <button class="wax-seal-btn" id="modalOkBtn" style="margin-top: 1.5rem; padding: 0.6rem 1.5rem;">Honor & Glory</button>
+  </div>
+</div>
+
+  <footer>
+    <p>Summon the Secretariat: <a href="mailto:secretariat@mimun.org">secretariat@mimun.org</a></p>
+    <p style="margin-top: 10px; font-size: 0.85rem; color: var(--gold-yellow);">
+      &copy; 2026 MIMUN 6.0 Conference. All Rights Reserved.
+    </p>
+  </footer>
+
+  <script src="js/script.js"></script>
+</body>
+</html>
