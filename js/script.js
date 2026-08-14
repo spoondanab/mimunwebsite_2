@@ -53,6 +53,9 @@ document.addEventListener('DOMContentLoaded', () => {
   const regForm = document.getElementById('registrationForm');
   const formResponse = document.getElementById('formResponse');
 
+  const submissionLoader = document.getElementById('submissionLoader');
+const loaderMessage = document.getElementById('loaderMessage');
+
   // Modal Controls
   const successModal = document.getElementById('successModal');
   const closeSuccessModal = document.getElementById('closeSuccessModal');
@@ -69,6 +72,10 @@ document.addEventListener('DOMContentLoaded', () => {
   if (regForm) {
     regForm.addEventListener('submit', async (e) => {
       e.preventDefault();
+
+      if (submissionLoader) {
+  submissionLoader.classList.add('active');
+}
 
       if (formResponse) {
         formResponse.style.color = 'var(--gold-yellow)';
@@ -103,7 +110,12 @@ document.addEventListener('DOMContentLoaded', () => {
             mode: 'no-cors',
             headers: { 'Content-Type': 'text/plain;charset=utf-8' },
             body: JSON.stringify(payload)
+
           });
+
+          if (submissionLoader) {
+            submissionLoader.classList.remove('active');
+}
 
           // Show Success Modal
           if (successModal) {
@@ -116,12 +128,18 @@ document.addEventListener('DOMContentLoaded', () => {
           regForm.reset();
 
         } catch (err) {
-          console.error('Submission Error:', err);
-          if (formResponse) {
-            formResponse.style.color = 'var(--blood-red)';
-            formResponse.innerText = '⚠️ Transmission failed. Please verify internet connection and try again.';
-          }
-        }
+  console.error('Submission Error:', err);
+
+  if (submissionLoader) {
+    submissionLoader.classList.remove('active');
+  }
+
+  if (formResponse) {
+    formResponse.style.color = 'var(--blood-red)';
+    formResponse.innerText =
+      '⚠️ Transmission failed. Please verify internet connection and try again.';
+  }
+}
       };
 
       // Convert image to base64 if present, then send

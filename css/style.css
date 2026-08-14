@@ -1931,3 +1931,150 @@ body::before {
   }
 
 }
+
+/* =========================================================
+   REGISTRATION LOADING SCREEN
+   ========================================================= */
+
+#submissionLoader {
+  position: fixed;
+  inset: 0;
+
+  width: 100vw;
+  height: 100vh;
+
+  background: var(--parchment);
+
+  display: none;
+
+  align-items: center;
+  justify-content: center;
+
+  z-index: 999999;
+}
+
+#submissionLoader.active {
+  display: flex;
+}
+
+.submission-loader-content {
+  width: calc(100% - 40px);
+  max-width: 450px;
+
+  padding: 3rem 2rem;
+
+  text-align: center;
+
+  background: var(--parchment);
+
+  border: 3px double var(--gold-yellow);
+  outline: 1px solid var(--blood-red);
+  outline-offset: -8px;
+
+  box-shadow: 0 15px 50px rgba(0, 0, 0, 0.25);
+
+  box-sizing: border-box;
+}
+
+.loader-crest {
+  font-size: 3rem;
+  color: var(--gold-yellow);
+
+  margin-bottom: 1rem;
+
+  animation: loaderPulse 2s ease-in-out infinite;
+}
+
+.submission-loader-content h2 {
+  margin: 0;
+
+  font-family: var(--font-heading);
+  color: var(--blood-red);
+
+  font-size: 1.4rem;
+  letter-spacing: 2px;
+}
+
+.loader-line {
+  display: flex;
+  align-items: center;
+
+  width: 80%;
+
+  margin: 1.2rem auto;
+}
+
+.loader-line::before,
+.loader-line::after {
+  content: "";
+
+  height: 1px;
+
+  flex: 1;
+
+  background: var(--gold-yellow);
+}
+
+.loader-line span {
+  padding: 0 12px;
+  color: var(--gold-yellow);
+}
+
+.submission-loader-content p {
+  font-family: var(--font-body);
+
+  font-size: 1rem;
+  font-style: italic;
+
+  line-height: 1.5;
+
+  margin: 0 0 1.5rem;
+
+  color: var(--text-dark);
+}
+
+.loader-spinner {
+  width: 40px;
+  height: 40px;
+
+  margin: 0 auto 1.5rem;
+
+  border: 3px solid rgba(107, 15, 26, 0.15);
+
+  border-top-color: var(--gold-yellow);
+  border-right-color: var(--blood-red);
+
+  border-radius: 50%;
+
+  animation: loaderSpin 1s linear infinite;
+}
+
+.submission-loader-content small {
+  font-family: var(--font-heading);
+
+  font-size: 0.65rem;
+
+  letter-spacing: 1px;
+
+  color: var(--blood-red);
+
+  opacity: 0.7;
+}
+
+@keyframes loaderSpin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes loaderPulse {
+  0%, 100% {
+    opacity: 0.6;
+    transform: scale(1);
+  }
+
+  50% {
+    opacity: 1;
+    transform: scale(1.08);
+  }
+}
