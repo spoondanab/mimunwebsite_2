@@ -293,7 +293,7 @@ footer a {
 .wax-seal-btn:active {
   transform: scale(0.95);
   box-shadow: inset 0 4px 10px rgba(0, 0, 0, 0.8), 0 2px 4px rgba(0, 0, 0, 0.4);
-  transition: transform 0.1s ease, box-shadow 0.1s ease;
+  transition: transform 0.1s ease, box-shadow 0.1s ease;}
 
 .gold-particle {
   position: fixed;
@@ -323,13 +323,788 @@ body {
 }
 
 #cursor {
-    position: fixed;
-    width: 12px;
-    height: 12px;
-    background: #D4AF37;
-    border-radius: 50%;
-    pointer-events: none;
-    z-index: 99999;
-    transform: translate(-50%, -50%);
-    box-shadow: 0 0 12px rgba(212, 175, 55, 0.7);
+  position: fixed;
+  width: 10px;
+  height: 10px;
+  background: #D4AF37;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 99999;
+  transform: translate(-50%, -50%);
+  box-shadow:
+    0 0 5px #D4AF37,
+    0 0 12px #D4AF37,
+    0 0 22px rgba(243, 229, 171, 0.8);
+}
+
+.gold-particle {
+  position: fixed;
+  width: 5px;
+  height: 5px;
+  background: #D4AF37;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9998;
+  box-shadow:
+    0 0 5px #D4AF37,
+    0 0 10px #F3E5AB;
+  animation: fadeAndShrink 0.7s ease-out forwards;
+}
+
+/* ==========================================================================
+   SECRETARIAT PAGE STYLES
+   ========================================================================== */
+
+.secretariat-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 2rem;
+  margin-top: 2.5rem;
+}
+
+.sec-card {
+  background: var(--parchment-dark);
+  border: 2px solid var(--gold-yellow);
+  border-radius: 16px;
+  padding: 1.8rem 1.2rem;
+  text-align: center;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.12);
+}
+
+.sec-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+}
+
+/* Container that controls the headshot size */
+.sec-headshot-wrapper {
+  width: 90px;
+  height: 90px;
+  margin: 0 auto 1rem auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.sec-headshot {
+  display: block;
+  width: 90px;
+  height: 90px;
+  max-width: 90px !important;
+  max-height: 90px !important; 
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid var(--gold-yellow);
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2);
+}
+.sec-name {
+  font-family: var(--font-heading);
+  font-size: 1.3rem;
+  color: var(--blood-red);
+  margin: 0 0 0.3rem 0;
+  font-weight: bold;
+}
+
+.sec-role {
+  font-family: var(--font-heading);
+  font-size: 0.85rem;
+  color: var(--text-dark);
+  letter-spacing: 1px;
+  font-weight: bold;
+  margin-bottom: 0.8rem;
+  opacity: 0.85;
+}
+
+.sec-bio {
+  font-size: 0.9rem;
+  color: var(--text-dark);
+  line-height: 1.4;
+  margin: 0;
+}
+
+/* Responsive Handling */
+@media (max-width: 600px) {
+  .secretariat-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ==========================================================================
+   SCHEDULE PAGE
+   ========================================================================== */
+
+.schedule-hero {
+  text-align: center;
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 5rem 2rem 3rem;
+}
+
+.schedule-kicker {
+  font-family: var(--font-heading);
+  font-size: 0.9rem;
+  letter-spacing: 4px;
+  color: var(--gold-yellow);
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+
+.schedule-hero h1 {
+  font-size: 3.2rem;
+  letter-spacing: 3px;
+  margin-bottom: 1rem;
+}
+
+.schedule-hero .divider-gold {
+  margin: 1.5rem 0;
+}
+
+.schedule-hero > p:last-child {
+  font-size: 1.15rem;
+  font-style: italic;
+  max-width: 650px;
+  margin: auto;
+}
+
+
+/* --- TWO COLUMN LAYOUT --- */
+
+.schedule-container {
+  max-width: 1250px;
+  margin: 0 auto 5rem;
+  padding: 0 2rem;
+
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+}
+
+
+/* --- DAY --- */
+
+.schedule-day {
+  background: rgba(230, 213, 195, 0.45);
+  border: 1px solid rgba(212, 175, 55, 0.6);
+  padding: 2rem;
+  position: relative;
+}
+
+.schedule-day::before {
+  content: "✦";
+  position: absolute;
+  top: -14px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--parchment);
+  color: var(--gold-yellow);
+  padding: 0 12px;
+  font-size: 1.2rem;
+}
+
+
+/* --- DAY HEADING --- */
+
+.day-heading {
+  display: flex;
+  align-items: center;
+  gap: 1.2rem;
+  padding-bottom: 1.5rem;
+  margin-bottom: 1rem;
+  border-bottom: 2px solid var(--gold-yellow);
+}
+
+.day-number {
+  font-family: var(--font-fancy);
+  font-size: 3.5rem;
+  line-height: 1;
+  color: var(--blood-red);
+}
+
+.day-heading p {
+  font-family: var(--font-heading);
+  font-size: 0.7rem;
+  letter-spacing: 3px;
+  color: var(--gold-yellow);
+  font-weight: 700;
+}
+
+.day-heading h2 {
+  font-size: 1.6rem;
+  margin-top: 0.2rem;
+}
+
+
+/* --- TIMELINE --- */
+
+.timeline {
+  position: relative;
+}
+
+
+/* Vertical gold line */
+
+.timeline::before {
+  content: "";
+  position: absolute;
+  left: 82px;
+  top: 10px;
+  bottom: 10px;
+  width: 1px;
+  background: var(--gold-yellow);
+  opacity: 0.6;
+}
+
+
+/* --- EVENT --- */
+
+.schedule-item {
+  display: grid;
+  grid-template-columns: 70px 1fr;
+  gap: 25px;
+  position: relative;
+  padding: 1.1rem 0;
+}
+
+
+/* Gold dot on timeline */
+
+.schedule-item::before {
+  content: "";
+  position: absolute;
+  left: 77px;
+  top: 1.6rem;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--gold-yellow);
+  border: 2px solid var(--parchment-dark);
+  box-shadow: 0 0 0 1px var(--gold-yellow);
+  z-index: 2;
+}
+
+
+/* --- TIME --- */
+
+.schedule-time {
+  font-family: var(--font-heading);
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: var(--blood-red);
+  text-align: right;
+  padding-top: 0.15rem;
+}
+
+
+/* --- EVENT CONTENT --- */
+
+.schedule-content {
+  padding-left: 15px;
+}
+
+.event-type {
+  font-family: var(--font-heading);
+  font-size: 0.65rem;
+  letter-spacing: 2px;
+  color: var(--gold-yellow);
+  font-weight: 700;
+}
+
+.schedule-content h3 {
+  font-family: var(--font-heading);
+  font-size: 1rem;
+  color: var(--blood-red);
+  margin: 0.2rem 0 0.3rem;
+}
+
+.schedule-content p {
+  font-size: 0.9rem;
+  line-height: 1.4;
+  color: var(--text-dark);
+}
+
+
+/* --- SPECIAL FINAL EVENT --- */
+
+.featured-event {
+  margin-top: 0.5rem;
+  padding: 1.3rem 0.8rem;
+  background: rgba(107, 15, 26, 0.08);
+  border: 1px solid rgba(107, 15, 26, 0.2);
+}
+
+.featured-event::before {
+  left: 77px;
+}
+
+
+/* --- MOBILE --- */
+
+@media (max-width: 850px) {
+
+  .schedule-container {
+    grid-template-columns: 1fr;
+    max-width: 650px;
+  }
+
+  .schedule-hero h1 {
+    font-size: 2.4rem;
+  }
+
+}
+
+
+@media (max-width: 500px) {
+
+  .schedule-container {
+    padding: 0 1rem;
+  }
+
+  .schedule-day {
+    padding: 1.3rem;
+  }
+
+  .day-heading h2 {
+    font-size: 1.3rem;
+  }
+
+  .schedule-item {
+    grid-template-columns: 60px 1fr;
+    gap: 20px;
+  }
+
+  .timeline::before {
+    left: 70px;
+  }
+
+  .schedule-item::before {
+    left: 65px;
+  }
+
+  .schedule-time {
+    font-size: 0.65rem;
+  }
+
+  .schedule-content h3 {
+    font-size: 0.9rem;
+  }
+
+}
+
+/* ==========================================================================
+   CINEMATIC HOMEPAGE HERO
+   ========================================================================== */
+
+.cinematic-hero {
+  min-height: calc(100vh - 80px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+  text-align: center;
+
+  background:
+    radial-gradient(
+      circle at center,
+      rgba(212, 175, 55, 0.12),
+      transparent 45%
+    ),
+    radial-gradient(
+      circle at center,
+      var(--parchment),
+      var(--parchment-dark)
+    );
+}
+
+
+/* Dark vignette */
+
+.cinematic-hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+
+  background:
+    radial-gradient(
+      ellipse at center,
+      transparent 35%,
+      rgba(28, 25, 23, 0.18) 100%
+    );
+}
+
+
+/* Hero content */
+
+.hero-content {
+  position: relative;
+  z-index: 3;
+
+  max-width: 1000px;
+  padding: 3rem 2rem;
+
+  animation: heroReveal 1.4s ease-out forwards;
+}
+
+
+/* Crest */
+
+.hero-crest {
+  font-size: 4rem;
+  color: var(--gold-yellow);
+
+  text-shadow:
+    0 0 10px rgba(212, 175, 55, 0.7),
+    0 0 30px rgba(212, 175, 55, 0.35);
+
+  animation: crestGlow 3s ease-in-out infinite;
+}
+
+
+/* Small heading */
+
+.hero-kicker {
+  margin-top: 1rem;
+
+  font-family: var(--font-heading);
+  font-size: 0.85rem;
+  font-weight: 700;
+
+  letter-spacing: 5px;
+
+  color: var(--blood-red);
+}
+
+
+/* Main title */
+
+.cinematic-hero h1 {
+  margin: 0.5rem 0;
+
+  font-family: var(--font-heading);
+  font-size: clamp(4rem, 10vw, 8rem);
+  font-weight: 900;
+
+  letter-spacing: 8px;
+
+  color: var(--blood-red);
+
+  text-shadow:
+    2px 2px 0 var(--gold-yellow),
+    4px 4px 15px rgba(0, 0, 0, 0.25);
+}
+
+
+/* Decorative divider */
+
+.hero-divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  gap: 1rem;
+
+  margin: 1rem auto;
+
+  max-width: 600px;
+}
+
+.hero-divider::before,
+.hero-divider::after {
+  content: "";
+
+  height: 2px;
+  flex: 1;
+
+  background:
+    linear-gradient(
+      to right,
+      transparent,
+      var(--gold-yellow)
+    );
+}
+
+.hero-divider::after {
+  background:
+    linear-gradient(
+      to left,
+      transparent,
+      var(--gold-yellow)
+    );
+}
+
+.hero-divider span {
+  color: var(--gold-yellow);
+}
+
+
+/* Tagline */
+
+.hero-tagline {
+  font-family: var(--font-body);
+  font-style: italic;
+
+  font-size: clamp(1.2rem, 2vw, 1.6rem);
+
+  color: var(--text-dark);
+
+  letter-spacing: 1px;
+}
+
+
+/* Countdown */
+
+.hero-countdown {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  gap: 1rem;
+
+  margin: 2.5rem 0;
+}
+
+.countdown-unit {
+  min-width: 90px;
+
+  display: flex;
+  flex-direction: column;
+
+  padding: 1rem 0.8rem;
+
+  border-top: 1px solid var(--gold-yellow);
+  border-bottom: 1px solid var(--gold-yellow);
+}
+
+.countdown-unit span {
+  font-family: var(--font-heading);
+
+  font-size: 2rem;
+  font-weight: 700;
+
+  color: var(--blood-red);
+}
+
+.countdown-unit small {
+  margin-top: 0.2rem;
+
+  font-family: var(--font-heading);
+  font-size: 0.6rem;
+
+  letter-spacing: 2px;
+  color: var(--text-dark);
+}
+
+.countdown-separator {
+  font-family: var(--font-heading);
+  font-size: 2rem;
+  color: var(--gold-yellow);
+}
+
+
+/* Register button */
+
+.hero-register {
+  margin-top: 1rem;
+
+  box-shadow:
+    0 5px 15px rgba(0, 0, 0, 0.25),
+    0 0 20px rgba(212, 175, 55, 0.15);
+}
+
+
+/* Side ornaments */
+
+.hero-ornament {
+  position: absolute;
+
+  font-family: var(--font-fancy);
+  font-size: 10rem;
+
+  color: var(--gold-yellow);
+
+  opacity: 0.12;
+
+  z-index: 1;
+}
+
+.ornament-left {
+  left: -2rem;
+  top: 20%;
+  transform: scaleX(-1);
+}
+
+.ornament-right {
+  right: -2rem;
+  bottom: 15%;
+}
+
+
+/* Animations */
+
+@keyframes heroReveal {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes crestGlow {
+  0%, 100% {
+    transform: scale(1);
+    text-shadow:
+      0 0 10px rgba(212, 175, 55, 0.7),
+      0 0 30px rgba(212, 175, 55, 0.35);
+  }
+
+  50% {
+    transform: scale(1.08);
+    text-shadow:
+      0 0 20px rgba(212, 175, 55, 0.9),
+      0 0 45px rgba(212, 175, 55, 0.5);
+  }
+}
+
+/* ==========================================================================
+   FLOATING GOLD PARTICLES
+   ========================================================================== */
+
+.hero-particles {
+  position: absolute;
+  inset: 0;
+
+  overflow: hidden;
+
+  pointer-events: none;
+
+  z-index: 1;
+}
+
+.floating-particle {
+  position: absolute;
+
+  width: 4px;
+  height: 4px;
+
+  border-radius: 50%;
+
+  background: var(--gold-yellow);
+
+  box-shadow:
+    0 0 5px var(--gold-yellow),
+    0 0 12px var(--gold-glow);
+
+  opacity: 0;
+
+  animation:
+    floatParticle linear infinite;
+}
+
+
+@keyframes floatParticle {
+
+  0% {
+    transform:
+      translateY(110vh)
+      scale(0.3);
+
+    opacity: 0;
+  }
+
+  15% {
+    opacity: 0.8;
+  }
+
+  50% {
+    opacity: 0.5;
+  }
+
+  85% {
+    opacity: 0.7;
+  }
+
+  100% {
+    transform:
+      translateY(-10vh)
+      scale(1);
+
+    opacity: 0;
+  }
+
+}
+
+/* ==========================================================================
+   PAGE TRANSITIONS
+   ========================================================================== */
+
+body {
+  animation: pageEnter 0.7s ease-out;
+}
+
+
+@keyframes pageEnter {
+
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+}
+
+
+/* Transition overlay */
+
+#page-transition {
+  position: fixed;
+
+  inset: 0;
+
+  background: var(--blood-red-dark);
+
+  z-index: 99998;
+
+  pointer-events: none;
+
+  transform: translateY(100%);
+
+  transition:
+    transform 0.6s cubic-bezier(0.77, 0, 0.175, 1);
+}
+
+
+#page-transition.active {
+  transform: translateY(0);
+}
+
+#page-transition::after {
+  content: "⚜";
+
+  position: absolute;
+
+  top: 50%;
+  left: 50%;
+
+  transform: translate(-50%, -50%);
+
+  font-family: var(--font-fancy);
+
+  font-size: 4rem;
+
+  color: var(--gold-yellow);
+
+  text-shadow:
+    0 0 15px var(--gold-yellow),
+    0 0 35px rgba(212, 175, 55, 0.5);
 }

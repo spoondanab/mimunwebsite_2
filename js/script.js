@@ -45,31 +45,6 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 });
 
-const cursor = document.getElementById('cursor');
-
-document.addEventListener('mousemove', (e) => {
-
-  // Move main golden cursor
-  cursor.style.left = `${e.clientX}px`;
-  cursor.style.top = `${e.clientY}px`;
-
-  // Create red particle trail
-  if (Math.random() < 0.3) {
-
-    const particle = document.createElement('div');
-
-    particle.className = 'gold-particle';
-
-    particle.style.left = `${e.clientX}px`;
-    particle.style.top = `${e.clientY}px`;
-
-    document.body.appendChild(particle);
-
-    setTimeout(() => {
-      particle.remove();
-    }, 800);
-  }
-});
 
 // Paste your deployed Google Apps Script Web App URL here
 const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwq-Hd4yc28EmofTePBaZwi2yFRCvBUoFPC-8oOjs2z682JH87ge4EUtj4xJ5fvwnSzoA/exec";
@@ -152,7 +127,7 @@ document.addEventListener('DOMContentLoaded', () => {
       // Convert image to base64 if present, then send
       if (file) {
         const reader = new FileReader();
-        reader.onload = function (event) {
+        reader.onLoad = function (event) {
           sendToGoogleSheets(event.target.result, file.name, file.type);
         };
         reader.readAsDataURL(file);
@@ -180,4 +155,245 @@ if (receiptInput && filePrompt) {
 
   
 }
+
+const revealElements = document.querySelectorAll('.scroll-reveal');
+
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+        }
+    });
+});
+
+revealElements.forEach(element => observer.observe(element));
+
+/* ==========================================================================
+   SECRETARIAT DATASTORE
+   ========================================================================== */
+const secretariatMembers = [
+  {
+    name: "Albert Einstein",
+    role: "SECRETARY-GENERAL",
+    image: "assets/mimun6.0_logo.jpeg", // Replace with your image paths
+    bio: "Guiding the next generation of smartypants"
+  },
+  {
+    name: "Robinson Crusoe",
+    role: "DIRECTOR-GENERAL",
+    image: "assets/mimun6.0_logo.jpeg",
+    bio: "Overseeing adventurous operations"
+  },
+  {
+    name: "Mahatma Gandhi",
+    role: "USG Delegate Affairs",
+    image: "assets/mimun6.0_logo.jpeg",
+    bio: "Managing idiots."
+  },
+  {
+    name: "Tom Holland",
+    role: "Charge D'Affaires",
+    image: "assets/mimun6.0_logo.jpeg",
+    bio: "Donning fancy ass French names"
+  },
+  {
+    name: "Marcus Aurelius",
+    role: "USG Design",
+    image: "assets/mimun6.0_logo.jpeg",
+    bio: "Making utter BS look pretty"
+  },
+  {
+    name: "Mr. Brainrotter",
+    role: "USG EB Affairs",
+    image: "assets/mimun6.0_logo.jpeg",
+    bio: "Dealing with smart jerks"
+  }
+];
+
+/* ==========================================================================
+   RENDER SECRETARIAT CARDS
+   ========================================================================== */
+document.addEventListener("DOMContentLoaded", () => {
+  const grid = document.getElementById("secretariatGrid");
+  if (!grid) return;
+
+  secretariatMembers.forEach(member => {
+    const card = document.createElement("div");
+    card.className = "sec-card gold-border";
+
+    // Fallback image handling
+    const imageSrc = member.image || "https://via.placeholder.com/150";
+
+    card.innerHTML = `
+      <div class="sec-headshot-wrapper">
+        <img src="${imageSrc}" alt="${member.name}" class="sec-headshot">
+      </div>
+      <h3 class="sec-name">${member.name}</h3>
+      <div class="sec-role">${member.role}</div>
+      <p class="sec-bio">${member.bio}</p>
+    `;
+
+    grid.appendChild(card);
+  });
+});
+
+/* ========================================================================== 
+   GOLDEN CURSOR + TRAIL
+   ========================================================================== */
+
+const cursor = document.getElementById("cursor");
+
+if (cursor) {
+  document.addEventListener("mousemove", (e) => {
+    cursor.style.left = `${e.clientX}px`;
+    cursor.style.top = `${e.clientY}px`;
+
+    // Create a trail particle
+    const particle = document.createElement("div");
+    particle.className = "gold-particle";
+
+    particle.style.left = `${e.clientX}px`;
+    particle.style.top = `${e.clientY}px`;
+
+    document.body.appendChild(particle);
+
+    // Remove particle after animation
+    setTimeout(() => {
+      particle.remove();
+    }, 800);
+  });
+}
+
+/* ==========================================================================
+   MIMUN COUNTDOWN
+   ========================================================================== */
+
+const conferenceDate = new Date("2026-10-10T09:00:00").getTime();
+
+function updateCountdown() {
+
+  const now = new Date().getTime();
+  const difference = conferenceDate - now;
+
+  if (difference <= 0) {
+    document.getElementById("days").textContent = "00";
+    document.getElementById("hours").textContent = "00";
+    document.getElementById("minutes").textContent = "00";
+    document.getElementById("seconds").textContent = "00";
+    return;
+  }
+
+  const days = Math.floor(
+    difference / (1000 * 60 * 60 * 24)
+  );
+
+  const hours = Math.floor(
+    (difference / (1000 * 60 * 60)) % 24
+  );
+
+  const minutes = Math.floor(
+    (difference / (1000 * 60)) % 60
+  );
+
+  const seconds = Math.floor(
+    (difference / 1000) % 60
+  );
+
+  const daysElement = document.getElementById("days");
+
+  if (!daysElement) return;
+
+  daysElement.textContent = String(days).padStart(2, "0");
+  document.getElementById("hours").textContent =
+    String(hours).padStart(2, "0");
+
+  document.getElementById("minutes").textContent =
+    String(minutes).padStart(2, "0");
+
+  document.getElementById("seconds").textContent =
+    String(seconds).padStart(2, "0");
+}
+
+updateCountdown();
+setInterval(updateCountdown, 1000);
+
+/* ==========================================================================
+   FLOATING HERO PARTICLES
+   ========================================================================== */
+
+const particleContainer =
+  document.querySelector(".hero-particles");
+
+if (particleContainer) {
+
+  for (let i = 0; i < 35; i++) {
+
+    const particle =
+      document.createElement("span");
+
+    particle.className =
+      "floating-particle";
+
+    particle.style.left =
+      `${Math.random() * 100}%`;
+
+    particle.style.animationDuration =
+      `${8 + Math.random() * 12}s`;
+
+    particle.style.animationDelay =
+      `${Math.random() * 10}s`;
+
+    const size =
+      2 + Math.random() * 4;
+
+    particle.style.width =
+      `${size}px`;
+
+    particle.style.height =
+      `${size}px`;
+
+    particleContainer.appendChild(particle);
+  }
+}
+
+/* ==========================================================================
+   PAGE TRANSITIONS
+   ========================================================================== */
+
+const transition =
+  document.createElement("div");
+
+transition.id = "page-transition";
+
+document.body.appendChild(transition);
+
+
+document.querySelectorAll("a").forEach(link => {
+
+  const href = link.getAttribute("href");
+
+  if (
+    !href ||
+    href.startsWith("#") ||
+    href.startsWith("mailto:") ||
+    href.startsWith("http") ||
+    link.target === "_blank"
+  ) {
+    return;
+  }
+
+
+  link.addEventListener("click", event => {
+
+    event.preventDefault();
+
+    transition.classList.add("active");
+
+    setTimeout(() => {
+      window.location.href = href;
+    }, 550);
+
+  });
+
+});
 
