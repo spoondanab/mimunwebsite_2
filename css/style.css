@@ -1108,3 +1108,30 @@ body {
     0 0 15px var(--gold-yellow),
     0 0 35px rgba(212, 175, 55, 0.5);
 }
+
+/* ==========================================================================
+   SUBTLE PARCHMENT TEXTURE
+   ========================================================================== */
+
+body {
+  position: relative;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+
+  pointer-events: none;
+  z-index: 9990;
+
+  opacity: 0.08;
+
+  background-image:
+    radial-gradient(
+      rgba(28, 25, 23, 0.35) 0.7px,
+      transparent 0.7px
+    );
+
+  background-size: 4px 4px;
+}
