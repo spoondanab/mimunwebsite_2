@@ -127,7 +127,7 @@ document.addEventListener('DOMContentLoaded', () => {
       // Convert image to base64 if present, then send
       if (file) {
         const reader = new FileReader();
-        reader.onLoad = function (event) {
+        reader.onload = function (event) {
           sendToGoogleSheets(event.target.result, file.name, file.type);
         };
         reader.readAsDataURL(file);
